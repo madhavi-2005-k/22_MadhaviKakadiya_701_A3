@@ -1,0 +1,10 @@
+{
+  "name": "q5-employee-portal",
+  "version": "1.0.0",
+  "description": "Employee site login with JWT, Mongoose, Express, React.js",
+  "scripts": {
+    "server": "node server/server.js",
+    "client": "npm run dev --prefix client",
+    "seed": "node server/seed.js"
+  }
+}

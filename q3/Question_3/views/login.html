@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Express Session</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .card {
+      background: #ffffff;
+      padding: 35px 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+    h1 {
+      font-size: 26px;
+      color: #333333;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .subtitle {
+      font-size: 14px;
+      color: #666666;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #444444;
+      margin-bottom: 6px;
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 15px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.25);
+    }
+    button[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background: #667eea;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.1s;
+    }
+    button[type="submit"]:hover {
+      background: #5a67d8;
+    }
+    button[type="submit"]:active {
+      transform: scale(0.99);
+    }
+    .alert {
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 18px;
+      font-size: 14px;
+      display: none;
+    }
+    .alert-error {
+      background-color: #fee2e2;
+      color: #b91c1c;
+      border: 1px solid #f87171;
+    }
+    .alert-success {
+      background-color: #dcfce7;
+      color: #15803d;
+      border: 1px solid #86efac;
+    }
+    .demo-box {
+      margin-top: 24px;
+      padding: 14px;
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #475569;
+    }
+    .demo-box p {
+      margin-bottom: 4px;
+    }
+    .demo-box strong {
+      color: #1e293b;
+    }
+    .tag {
+      display: inline-block;
+      background: #e2e8f0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Login</h1>
+    <p class="subtitle">Express Login with Session Store</p>
+
+    <div id="alertBox" class="alert"></div>
+
+    <form method="POST" action="/login">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter username" required autofocus />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter password" required />
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const alertBox = document.getElementById('alertBox');
+    const error = params.get('error');
+    const message = params.get('message');
+
+    if (error) {
+      alertBox.className = 'alert alert-error';
+      alertBox.textContent = error;
+      alertBox.style.display = 'block';
+    } else if (message) {
+      alertBox.className = 'alert alert-success';
+      alertBox.textContent = message;
+      alertBox.style.display = 'block';
+    }
+  </script>
+</body>
+</html>

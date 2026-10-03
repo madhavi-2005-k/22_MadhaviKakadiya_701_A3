@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ERP Admin Login</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="login-card">
+      <h2>ERP Admin Login</h2>
+
+      <% if (error) { %>
+        <div class="alert alert-danger"><%= error %></div>
+      <% } %>
+
+      <% if (success) { %>
+        <div class="alert alert-success"><%= success %></div>
+      <% } %>
+
+      <form action="/login" method="POST">
+        <div class="form-group">
+          <label for="username">Admin Username</label>
+          <input 
+            type="text" 
+            id="username" 
+            name="username" 
+            class="form-control" 
+            placeholder="Enter admin username" 
+            required 
+            autofocus
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            class="form-control" 
+            placeholder="Enter password" 
+            required
+          >
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+          Login to ERP
+        </button>
+      </form>
+
+      <div class="alert alert-info" style="margin-top: 20px; font-size: 13px;">
+        <strong>Default Admin:</strong><br>
+        Username: <code>admin</code><br>
+        Password: <code>admin123</code>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

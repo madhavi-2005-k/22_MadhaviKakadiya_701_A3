@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 30px;
+}
+
+.container {
+    width: 700px;
+    margin: auto;
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.options {
+    margin-top: 8px;
+    line-height: 30px;
+}
+
+button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 12px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+.error-box {
+    background-color: #ffe5e5;
+    border: 1px solid red;
+    padding: 10px;
+    color: red;
+}
+
+.small-text {
+    color: gray;
+    font-size: 13px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    border: 1px solid #999;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #eeeeee;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.other-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-top: 10px;
+}
+
+.image-box {
+    display: inline-block;
+    text-align: center;
+    margin: 10px;
+}
+
+a {
+    color: blue;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 10px;
+}

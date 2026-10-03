@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Registration Details</title>
+
+    <style>
+
+        body {
+            font-family: Arial;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            width: 800px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: green;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .other-image {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+        }
+
+        .download {
+            display: inline-block;
+            background-color: green;
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Registration Successful</h1>
+
+    <table>
+
+        <!-- Username -->
+
+        <tr>
+
+            <th>Username</th>
+
+            <td>
+                <%= data.username %>
+            </td>
+
+        </tr>
+
+        <!-- Email -->
+
+        <tr>
+
+            <th>Email</th>
+
+            <td>
+                <%= data.email %>
+            </td>
+
+        </tr>
+
+        <!-- Gender -->
+
+        <tr>
+
+            <th>Gender</th>
+
+            <td>
+                <%= data.gender %>
+            </td>
+
+        </tr>
+
+        <!-- Hobbies -->
+
+        <tr>
+
+            <th>Hobbies</th>
+
+            <td>
+
+                <%= Array.isArray(data.hobbies)
+                    ? data.hobbies.join(", ")
+                    : data.hobbies %>
+
+            </td>
+
+        </tr>
+
+        <!-- Profile Picture -->
+
+        <tr>
+
+            <th>Profile Picture</th>
+
+            <td>
+
+                <img
+                    src="/uploads/profile/<%= profilePic.filename %>"
+                    alt="Profile Picture"
+                >
+
+                <br>
+
+                <a
+                    class="download"
+                    href="/download/profile/<%= profilePic.filename %>"
+                >
+                    Download Profile Picture
+                </a>
+
+            </td>
+
+        </tr>
+
+        <!-- Other Pictures -->
+
+        <tr>
+
+            <th>Other Pictures</th>
+
+            <td>
+
+                <% otherPics.forEach(function(file) { %>
+
+                    <div style="display:inline-block">
+
+                        <img
+                            class="other-image"
+                            src="/uploads/others/<%= file.filename %>"
+                            alt="Other Picture"
+                        >
+
+                        <br>
+
+                        <a
+                            class="download"
+                            href="/download/other/<%= file.filename %>"
+                        >
+                            Download
+                        </a>
+
+                    </div>
+
+                <% }); %>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+    <br>
+
+    <a href="/">
+        Go Back to Registration Form
+    </a>
+
+</div>
+
+</body>
+
+</html>

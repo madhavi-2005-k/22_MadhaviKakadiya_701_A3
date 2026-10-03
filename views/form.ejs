@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>User Registration</title>
+
+    <link rel="stylesheet" href="/public/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>User Registration Form</h1>
+
+    <% if (errors.length > 0) { %>
+
+        <div class="error-box">
+
+            <h3>Please correct the following errors:</h3>
+
+            <ul>
+
+                <% errors.forEach(function(error) { %>
+
+                    <li><%= error.msg %></li>
+
+                <% }); %>
+
+            </ul>
+
+        </div>
+
+    <% } %>
+
+
+    <form action="/register" method="POST" enctype="multipart/form-data">
+
+        <label>Username</label>
+
+        <input
+            type="text"
+            name="username"
+            value="<%= oldData.username || '' %>"
+        >
+
+
+        <label>Password</label>
+
+        <input
+            type="password"
+            name="password"
+        >
+
+
+        <label>Confirm Password</label>
+
+        <input
+            type="password"
+            name="confirmPassword"
+        >
+
+
+        <label>Email</label>
+
+        <input
+            type="text"
+            name="email"
+            value="<%= oldData.email || '' %>"
+        >
+
+
+        <label>Gender</label>
+
+        <div class="options">
+
+            <input
+                type="radio"
+                name="gender"
+                value="Male"
+                <%= oldData.gender === "Male" ? "checked" : "" %>
+            >
+            Male
+
+            <input
+                type="radio"
+                name="gender"
+                value="Female"
+                <%= oldData.gender === "Female" ? "checked" : "" %>
+            >
+            Female
+
+            <input
+                type="radio"
+                name="gender"
+                value="Other"
+                <%= oldData.gender === "Other" ? "checked" : "" %>
+            >
+            Other
+
+        </div>
+
+
+        <label>Hobbies</label>
+
+        <div class="options">
+
+            <input
+                type="checkbox"
+                name="hobbies"
+                value="Reading"
+            >
+            Reading
+
+            <input
+                type="checkbox"
+                name="hobbies"
+                value="Music"
+            >
+            Music
+
+            <input
+                type="checkbox"
+                name="hobbies"
+                value="Sports"
+            >
+            Sports
+
+            <input
+                type="checkbox"
+                name="hobbies"
+                value="Travel"
+            >
+            Travel
+
+        </div>
+
+
+        <label>Profile Picture</label>
+
+        <input
+            type="file"
+            name="profilePic"
+            accept=".jpg,.jpeg,.png"
+        >
+
+
+        <label>Other Pictures</label>
+
+        <input
+            type="file"
+            name="otherPics"
+            accept=".jpg,.jpeg,.png"
+            multiple
+        >
+
+        <p class="small-text">
+            Maximum 5 other pictures. Only JPG, JPEG and PNG files.
+            Maximum size of each file is 2 MB.
+        </p>
+
+
+        <button type="submit">
+            Register
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>

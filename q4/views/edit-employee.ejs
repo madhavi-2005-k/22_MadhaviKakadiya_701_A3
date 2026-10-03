@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Employee - ERP System</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="navbar">
+    <h1>ERP System - Admin Panel</h1>
+    <div class="nav-links">
+      <a href="/dashboard" class="btn btn-secondary btn-sm">Dashboard</a>
+      <a href="/logout" class="btn btn-danger btn-sm">Logout</a>
+    </div>
+  </nav>
+
+  <div class="container" style="max-width: 700px;">
+    <div class="card">
+      <div class="header-row">
+        <h2>Edit Employee (<%= employee.empid %>)</h2>
+        <a href="/dashboard" class="btn btn-secondary btn-sm">← Back</a>
+      </div>
+
+      <% if (error) { %>
+        <div class="alert alert-danger"><%= error %></div>
+      <% } %>
+
+      <form action="/employees/edit/<%= employee._id %>" method="POST">
+        
+        <div class="form-group">
+          <label>Employee ID</label>
+          <input type="text" class="form-control" value="<%= employee.empid %>" disabled style="background-color: #f1f2f6;">
+        </div>
+
+        <div class="form-group">
+          <label for="name">Employee Full Name *</label>
+          <input type="text" id="name" name="name" class="form-control" value="<%= employee.name %>" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Employee Email Address *</label>
+          <input type="email" id="email" name="email" class="form-control" value="<%= employee.email %>" required>
+        </div>
+
+        <div class="form-group">
+          <label for="department">Department *</label>
+          <select id="department" name="department" class="form-control" required>
+            <option value="IT / Development" <%= employee.department === 'IT / Development' ? 'selected' : '' %>>IT / Development</option>
+            <option value="Human Resources" <%= employee.department === 'Human Resources' ? 'selected' : '' %>>Human Resources</option>
+            <option value="Finance & Accounts" <%= employee.department === 'Finance & Accounts' ? 'selected' : '' %>>Finance & Accounts</option>
+            <option value="Sales & Marketing" <%= employee.department === 'Sales & Marketing' ? 'selected' : '' %>>Sales & Marketing</option>
+            <option value="Operations" <%= employee.department === 'Operations' ? 'selected' : '' %>>Operations</option>
+          </select>
+        </div>
+
+        <hr style="margin: 20px 0; border: none; border-top: 1px solid #e0e0e0;">
+        <h3 style="font-size: 16px; margin-bottom: 12px; color: #2c3e50;">Salary Breakdown & Calculation</h3>
+
+        <div class="form-group">
+          <label for="basicSalary">Basic Salary (₹) *</label>
+          <input 
+            type="number" 
+            id="basicSalary" 
+            name="basicSalary" 
+            class="form-control" 
+            value="<%= employee.basicSalary %>" 
+            min="0" 
+            step="any"
+            required
+            oninput="calculateSalary()"
+          >
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="hra">HRA - House Rent Allowance (₹)</label>
+            <input 
+              type="number" 
+              id="hra" 
+              name="hra" 
+              class="form-control" 
+              value="<%= employee.hra %>" 
+              min="0" 
+              step="any"
+              oninput="calculateSalaryManual()"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="da">DA - Dearness Allowance (₹)</label>
+            <input 
+              type="number" 
+              id="da" 
+              name="da" 
+              class="form-control" 
+              value="<%= employee.da %>" 
+              min="0" 
+              step="any"
+              oninput="calculateSalaryManual()"
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="deductions">Deductions - PF & Taxes (₹)</label>
+          <input 
+            type="number" 
+            id="deductions" 
+            name="deductions" 
+            class="form-control" 
+            value="<%= employee.deductions %>" 
+            min="0" 
+            step="any"
+            oninput="calculateSalaryManual()"
+          >
+        </div>
+
+        <div class="salary-summary-box">
+          <strong>Calculated Net Salary: </strong>
+          <span id="netSalaryDisplay">₹<%= employee.netSalary.toLocaleString() %></span>
+        </div>
+
+        <div style="margin-top: 15px;">
+          <button type="submit" class="btn btn-primary">Update Employee</button>
+          <a href="/dashboard" class="btn btn-secondary">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function calculateSalary() {
+      const basic = parseFloat(document.getElementById('basicSalary').value) || 0;
+      
+      const hra = Math.round(basic * 0.20);
+      const da = Math.round(basic * 0.10);
+      const deductions = Math.round(basic * 0.05);
+
+      document.getElementById('hra').value = hra;
+      document.getElementById('da').value = da;
+      document.getElementById('deductions').value = deductions;
+
+      const netSalary = basic + hra + da - deductions;
+      document.getElementById('netSalaryDisplay').innerText = '₹' + netSalary.toLocaleString();
+    }
+
+    function calculateSalaryManual() {
+      const basic = parseFloat(document.getElementById('basicSalary').value) || 0;
+      const hra = parseFloat(document.getElementById('hra').value) || 0;
+      const da = parseFloat(document.getElementById('da').value) || 0;
+      const deductions = parseFloat(document.getElementById('deductions').value) || 0;
+
+      const netSalary = basic + hra + da - deductions;
+      document.getElementById('netSalaryDisplay').innerText = '₹' + netSalary.toLocaleString();
+    }
+  </script>
+
+</body>
+</html>

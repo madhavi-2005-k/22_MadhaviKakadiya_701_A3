@@ -1,0 +1,246 @@
+/* =========================================
+   SIMPLE CSS FOR EMPLOYEE PORTAL (MERN)
+========================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  color: #333;
+}
+
+/* NAVBAR */
+.navbar {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 20px;
+}
+
+.nav-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.nav-brand {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-btn {
+  background: white;
+  color: #007bff;
+  border: 1px solid white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.nav-btn.active {
+  background: #ffc107;
+  color: #000;
+  border-color: #ffc107;
+}
+
+.logout-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* CONTAINERS & CARDS */
+.main-content {
+  max-width: 1000px;
+  margin: 25px auto;
+  padding: 0 15px;
+}
+
+.login-wrapper {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 0 15px;
+}
+
+.card, .login-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card-title, .login-header {
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* FORMS */
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.submit-btn {
+  width: 100%;
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 9px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.submit-btn:hover {
+  background: #0056b3;
+}
+
+/* ALERTS */
+.alert {
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.alert-error {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.alert-success {
+  background: #d4edda;
+  color: #155724;
+}
+
+/* PROFILE GRID */
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.profile-item {
+  background: #fdfdfd;
+  border: 1px solid #e5e5e5;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.profile-label {
+  font-size: 11px;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.profile-value {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+.highlight {
+  color: #28a745;
+}
+
+/* LEAVE SECTION */
+.leave-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .leave-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* TABLE */
+.table-container {
+  overflow-x: auto;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.custom-table th, .custom-table td {
+  border: 1px solid #ddd;
+  padding: 8px 10px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.custom-table th {
+  background-color: #f1f1f1;
+}
+
+/* BADGES & ACTION BUTTONS */
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.badge-yes {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.badge-no {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.toggle-btn {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+}

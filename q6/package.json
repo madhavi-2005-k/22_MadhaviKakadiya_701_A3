@@ -1,0 +1,10 @@
+{
+  "name": "q6-utility-api",
+  "version": "1.0.0",
+  "description": "Call free API for useful utility from frontend and backend (MERN Practical)",
+  "scripts": {
+    "server": "node server/server.js",
+    "client": "npm run dev --prefix client",
+    "start": "node server/server.js"
+  }
+}

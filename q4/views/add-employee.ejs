@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Employee - ERP System</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="navbar">
+    <h1>ERP System - Admin Panel</h1>
+    <div class="nav-links">
+      <a href="/dashboard" class="btn btn-secondary btn-sm">Dashboard</a>
+      <a href="/logout" class="btn btn-danger btn-sm">Logout</a>
+    </div>
+  </nav>
+
+  <div class="container" style="max-width: 700px;">
+    <div class="card">
+      <div class="header-row">
+        <h2>Add New Employee</h2>
+        <a href="/dashboard" class="btn btn-secondary btn-sm">← Back</a>
+      </div>
+
+      <% if (error) { %>
+        <div class="alert alert-danger"><%= error %></div>
+      <% } %>
+
+      <div class="alert alert-info">
+        <strong>Automatic Credentials:</strong> Employee ID (`empid`) and Password will be automatically generated. The password will be encrypted with bcrypt and emailed to the employee.
+      </div>
+
+      <form action="/employees/add" method="POST" id="employeeForm">
+        
+        <div class="form-group">
+          <label for="name">Employee Full Name *</label>
+          <input type="text" id="name" name="name" class="form-control" placeholder="e.g. John Doe" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Employee Email Address *</label>
+          <input type="email" id="email" name="email" class="form-control" placeholder="e.g. swenishah2812@gmail.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="department">Department *</label>
+          <select id="department" name="department" class="form-control" required>
+            <option value="">-- Select Department --</option>
+            <option value="IT / Development">IT / Development</option>
+            <option value="Human Resources">Human Resources</option>
+            <option value="Finance & Accounts">Finance & Accounts</option>
+            <option value="Sales & Marketing">Sales & Marketing</option>
+            <option value="Operations">Operations</option>
+          </select>
+        </div>
+
+        <hr style="margin: 20px 0; border: none; border-top: 1px solid #e0e0e0;">
+        <h3 style="font-size: 16px; margin-bottom: 12px; color: #2c3e50;">Salary Breakdown & Calculation</h3>
+
+        <div class="form-group">
+          <label for="basicSalary">Basic Salary (₹) *</label>
+          <input 
+            type="number" 
+            id="basicSalary" 
+            name="basicSalary" 
+            class="form-control" 
+            placeholder="e.g. 50000" 
+            min="0" 
+            step="any"
+            required
+            oninput="calculateSalary()"
+          >
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="hra">HRA - House Rent Allowance (20%)</label>
+            <input 
+              type="number" 
+              id="hra" 
+              name="hra" 
+              class="form-control" 
+              placeholder="Auto-calculated (20%)" 
+              min="0" 
+              step="any"
+              oninput="calculateSalaryManual()"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="da">DA - Dearness Allowance (10%)</label>
+            <input 
+              type="number" 
+              id="da" 
+              name="da" 
+              class="form-control" 
+              placeholder="Auto-calculated (10%)" 
+              min="0" 
+              step="any"
+              oninput="calculateSalaryManual()"
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="deductions">Deductions - PF & Taxes (5%)</label>
+          <input 
+            type="number" 
+            id="deductions" 
+            name="deductions" 
+            class="form-control" 
+            placeholder="Auto-calculated (5%)" 
+            min="0" 
+            step="any"
+            oninput="calculateSalaryManual()"
+          >
+        </div>
+
+        <div class="salary-summary-box">
+          <strong>Calculated Net Salary: </strong>
+          <span id="netSalaryDisplay">₹0</span>
+        </div>
+
+        <div style="margin-top: 15px;">
+          <button type="submit" class="btn btn-success">Save & Send Email</button>
+          <a href="/dashboard" class="btn btn-secondary">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Automatically calculate HRA (20%), DA (10%), Deductions (5%), and Net Salary
+    function calculateSalary() {
+      const basic = parseFloat(document.getElementById('basicSalary').value) || 0;
+      
+      const hra = Math.round(basic * 0.20);
+      const da = Math.round(basic * 0.10);
+      const deductions = Math.round(basic * 0.05);
+
+      document.getElementById('hra').value = hra;
+      document.getElementById('da').value = da;
+      document.getElementById('deductions').value = deductions;
+
+      const netSalary = basic + hra + da - deductions;
+      document.getElementById('netSalaryDisplay').innerText = '₹' + netSalary.toLocaleString();
+    }
+
+    // Recalculate Net Salary if admin manually edits allowances or deductions
+    function calculateSalaryManual() {
+      const basic = parseFloat(document.getElementById('basicSalary').value) || 0;
+      const hra = parseFloat(document.getElementById('hra').value) || 0;
+      const da = parseFloat(document.getElementById('da').value) || 0;
+      const deductions = parseFloat(document.getElementById('deductions').value) || 0;
+
+      const netSalary = basic + hra + da - deductions;
+      document.getElementById('netSalaryDisplay').innerText = '₹' + netSalary.toLocaleString();
+    }
+  </script>
+
+</body>
+</html>

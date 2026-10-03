@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Registration Details</title>
+
+    <link rel="stylesheet" href="/public/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Registration Successful</h1>
+
+    <table>
+
+        <tr>
+            <th>Field</th>
+            <th>Details</th>
+        </tr>
+
+        <tr>
+            <td>Username</td>
+            <td><%= data.username %></td>
+        </tr>
+
+        <tr>
+            <td>Email</td>
+            <td><%= data.email %></td>
+        </tr>
+
+        <tr>
+            <td>Gender</td>
+            <td><%= data.gender %></td>
+        </tr>
+
+        <tr>
+            <td>Hobbies</td>
+            <td>
+
+                <% if (Array.isArray(data.hobbies)) { %>
+
+                    <%= data.hobbies.join(", ") %>
+
+                <% } else { %>
+
+                    <%= data.hobbies %>
+
+                <% } %>
+
+            </td>
+        </tr>
+
+        <tr>
+
+            <td>Profile Picture</td>
+
+            <td>
+
+                <img
+                    class="profile-image"
+                    src="/uploads/<%= profilePic.filename %>"
+                >
+
+                <br>
+
+                <a href="/download/<%= profilePic.filename %>">
+                    Download Profile Picture
+                </a>
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Other Pictures</td>
+
+            <td>
+
+                <% otherPics.forEach(function(pic) { %>
+
+                    <div class="image-box">
+
+                        <img
+                            class="other-image"
+                            src="/uploads/<%= pic.filename %>"
+                        >
+
+                        <br>
+
+                        <a href="/download/<%= pic.filename %>">
+                            Download
+                        </a>
+
+                    </div>
+
+                <% }); %>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+    <br>
+
+    <a href="/" class="back-button">
+        Register Another User
+    </a>
+
+</div>
+
+</body>
+
+</html>

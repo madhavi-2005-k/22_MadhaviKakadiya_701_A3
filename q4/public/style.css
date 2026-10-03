@@ -1,0 +1,198 @@
+/* =======================================
+   SIMPLE & BASIC CSS FOR PRACTICAL
+======================================= */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #000;
+}
+
+h1, h2, h3 {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+/* --- Navigation Bar --- */
+.navbar {
+  background-color: #e9ecef;
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar h1 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.navbar a {
+  margin-left: 10px;
+}
+
+/* --- Container & Box --- */
+.container {
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* --- Table with standard borders --- */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+table th, table td {
+  border: 1px solid #777;
+  padding: 8px 10px;
+  text-align: left;
+  font-size: 14px;
+}
+
+table th {
+  background-color: #e2e3e5;
+}
+
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* --- Forms & Inputs --- */
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #999;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.salary-summary-box {
+  background-color: #e9ecef;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 15px 0;
+  font-size: 16px;
+}
+
+/* --- Simple Buttons --- */
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid #333;
+  background-color: #f0f0f0;
+  color: #000;
+  border-radius: 2px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: #fff;
+  border-color: #28a745;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+  border-color: #dc3545;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+  border-color: #6c757d;
+}
+
+.btn-sm {
+  padding: 3px 8px;
+  font-size: 12px;
+}
+
+/* --- Simple Alert Boxes --- */
+.alert {
+  padding: 8px 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  font-size: 13px;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+.alert-info {
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+  color: #0c5460;
+}
+
+/* --- Login Box --- */
+.login-container {
+  max-width: 360px;
+  margin: 60px auto;
+}
+
+.login-card {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
